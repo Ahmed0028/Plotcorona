@@ -6,9 +6,9 @@ library(ggthemes)
 library(gifski)
 library(av)
 
-confirmedCases= read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv')
-deathCases= read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv')
-recoveredCases= read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv')
+confirmedCases= read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv')
+deathCases= read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv')
+recoveredCases= read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv')
 
 set system locale for date conversion purpose
 Sys.setlocale("LC_TIME", "English")
@@ -61,7 +61,8 @@ p <- ggplot(df2, aes(x=Date, y=act_noact, group=State, color=State)) +
   view_follow(fixed_y = TRUE)+
   coord_cartesian(clip = 'off') + 
   xlab("Day") +
-  ylab("Number of cases") + ggtitle(paste("Evolution of corona_cases over time as of ",lastDate)) +
+  ylab("Number of cases") + ggtitle(paste("                 @Ahmad_Almekdad 
+                                          Evolution of corona_cases over time as of ",lastDate)) +
   enter_drift(x_mod = -1) + exit_drift(x_mod = 1) +
   theme_classic() +
   theme(legend.position = c(0.2, 0.8))+
@@ -72,4 +73,4 @@ p <- ggplot(df2, aes(x=Date, y=act_noact, group=State, color=State)) +
         plot.margin = margin(5.5, 40, 5.5, 5.5))
 
 # create animation gif file
-animate(p, fps=5,renderer = gifski_renderer("coronavirusevolution.gif"))
+animate(p, fps=5,renderer = gifski_renderer("coronaplot04.gif"))
